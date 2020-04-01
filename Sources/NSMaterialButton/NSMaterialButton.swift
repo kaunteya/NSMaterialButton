@@ -23,11 +23,11 @@ public class NSMaterialButton: NSButton {
         widthAnchor.constraint(equalTo: heightAnchor).isActive = true
     }
 
-    override func updateLayer() {
+    public override func updateLayer() {
         layer?.cornerRadius = bounds.height / 2
     }
 
-    override func updateTrackingAreas() {
+    public override func updateTrackingAreas() {
         if trackingArea == nil {
             self.trackingArea = NSTrackingArea(rect: self.bounds, options: [.activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
             addTrackingArea(self.trackingArea!)
@@ -37,20 +37,20 @@ public class NSMaterialButton: NSButton {
 
     let pressColor = NSColor(white: 1, alpha: 0.30)
 
-    override func mouseDown(with event: NSEvent) {
+    public override func mouseDown(with event: NSEvent) {
         self.layer?.backgroundColor = pressColor.cgColor
     }
 
-    override func mouseUp(with event: NSEvent) {
+    public override func mouseUp(with event: NSEvent) {
         self.layer?.backgroundColor = inColor.cgColor
         sendAction(action, to: target)
     }
 
-    override func mouseEntered(with event: NSEvent) {
+    public override func mouseEntered(with event: NSEvent) {
         self.layer?.backgroundColor = inColor.cgColor
     }
 
-    override func mouseExited(with event: NSEvent) {
+    public override func mouseExited(with event: NSEvent) {
         self.layer?.backgroundColor = NSColor.clear.cgColor
     }
 }
